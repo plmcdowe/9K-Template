@@ -70,26 +70,26 @@ You should see <i>"vPC keep-alive status    : peer is alive"</i>
 <ins>Now, configure all production vlans globably \{ VM networks, ESX & vMotion, host management, admin workstation, etc. \} -      
 ALL VLANS for HOSTS must be configured on the PeerLink port-channel</ins>    
 
-|9KA|9KB|
-|---|---|
-|`vlan 888`|`vlan 888`|
-|`  name ChangeMe8`|`  name ChangeMe8`|
-|`vlan 999`|`vlan 999`|
-|`  name ChangeMe9`|`  name ChangeMe9`|
-|<ins><i>Peer-Link int's:</i></ins> `int e1/53-54`|<ins><i>Peer-Link int's:</i></ins> `int e1/53-54`|
-|`  description VPC-PeerLink`|`  description VPC-PeerLink`|
-|`  channel-group 5 mode active`|`  channel-group 5 mode active`|
-|`int Po5`|`int Po5`|
-|`  description VPC-PeerLink`|`  description VPC-PeerLink`|
-|`  switchport`|`  switchport`|
-|`  switchport mode trunk`|`  switchport mode trunk`|
-|`  switchport trunk allowed vlan 888,999`|`  switchport trunk allowed vlan 888,999`|
-|`  spanning-tree port type network`|`  spanning-tree port type network`|
-|`  vpc peer-link`|`  vpc peer-link`|
-|`int e1/53-54`|`int e1/53-54`|
-|`  no shut`|`  no shut`|
-|`int Po5`|`int Po5`|
-|`  no shut`|`  no shut`|
+|<i>Comment</i>|9KA|9KB|
+|---|---|---|
+||`vlan 888`|`vlan 888`|
+||`  name ChangeMe8`|`  name ChangeMe8`|
+||`vlan 999`|`vlan 999`|
+||`  name ChangeMe9`|`  name ChangeMe9`|
+|<ins><i>Peer-Link int's:</i></ins>|`int e1/53-54`|`int e1/53-54`|
+||`  description VPC-PeerLink`|`  description VPC-PeerLink`|
+||`  channel-group 5 mode active`|`  channel-group 5 mode active`|
+||`int Po5`|`int Po5`|
+||`  description VPC-PeerLink`|`  description VPC-PeerLink`|
+||`  switchport`|`  switchport`|
+||`  switchport mode trunk`|`  switchport mode trunk`|
+||`  switchport trunk allowed vlan 888,999`|`  switchport trunk allowed vlan 888,999`|
+||`  spanning-tree port type network`|`  spanning-tree port type network`|
+||`  vpc peer-link`|`  vpc peer-link`|
+||`int e1/53-54`|`int e1/53-54`|
+||`  no shut`|`  no shut`|
+||`int Po5`|`int Po5`|
+||`  no shut`|`  no shut`|
 
 <b><ins>PAUSE HERE - ENSURE THAT THE peer-link IS SUCCESSFULL with:</ins>:</b>    
 
@@ -100,18 +100,18 @@ Also verify that 9KA is "primary" for vPC role
 
 <ins>Now, prep the interfaces for the port-channeled trunk to CORE/root switch</ins>:    
 
-|9KA|9KB|
-|---|---|
-|<ins><i>tunk int's:</i></ins> `int e1/49-52`|<ins><i>tunk int's:</i></ins> `int e1/49-52`|
-|`  description CORE_Po255_Trunk`|`  description CORE_Po255_Trunk`|
-|`  channel-group 255 mode active`|`  channel-group 255 mode active`|
-|`int Po255`|`int Po255`|
-|`  description CORE_Po_49-52`|`  description CORE_Po_49-52`|
-|`  switchport`|`  switchport`|
-|`  switchport mode trunk`|`  switchport mode trunk`|
-|`  switchport trunk native vlan 111`|`  switchport trunk native vlan 111`|
-|`  switchport trunk allowed vlan 888,999`|`  switchport trunk allowed vlan 888,999`|
-|`  vpc 255`|`  vpc 255`|    
+|<i>Comment</i>|9KA|9KB|
+|---|---|---|
+|<ins><i>tunk int's:</i></ins>|`int e1/49-52`|`int e1/49-52`|
+||`  description CORE_Po255_Trunk`|`  description CORE_Po255_Trunk`|
+||`  channel-group 255 mode active`|`  channel-group 255 mode active`|
+||`int Po255`|`int Po255`|
+||`  description CORE_Po_49-52`|`  description CORE_Po_49-52`|
+||`  switchport`|`  switchport`|
+||`  switchport mode trunk`|`  switchport mode trunk`|
+||`  switchport trunk native vlan 111`|`  switchport trunk native vlan 111`|
+||`  switchport trunk allowed vlan 888,999`|`  switchport trunk allowed vlan 888,999`|
+||`  vpc 255`|`  vpc 255`|    
 
 
 > <b><ins>DO NOT "no shut" THE CORE TRUNKS or PORT CHANNEL UNTIL PHYSICALLY CONNECTED TO THE CORE</ins>:</b>    
@@ -148,23 +148,23 @@ Also verify that 9KA is "primary" for vPC role
 
 <ins>ILO</ins>:   
 
-|9KA|9KB|
-|---|---|
-|`int e1/2`|`int e1/2`|
-|`  description K8-01-ILO`|`  description K8-01-ILO`|
-|`  switchport`|`  switchport`|
-|<ins><i>site admin vlan:</i></ins> `  switchport access vlan 15`|<ins><i>site admin vlan:</i></ins> `  switchport access vlan 15`|
-|`  no shutdown`|`  no shutdown`|
+|<i>Comment</i>|9KA|9KB|
+|---|---|---|
+||`int e1/2`|`int e1/2`|
+||`  description K8-01-ILO`|`  description K8-01-ILO`|
+||`  switchport`|`  switchport`|
+|<ins><i>site admin vlan:</i></ins>|`  switchport access vlan 15`|`  switchport access vlan 15`|
+||`  no shutdown`|`  no shutdown`|
 
 <ins>ESX</ins>:    
 
-|9KA|9KB|
-|---|---|
-|`description K8-01-ESX`|`description K8-01-ESX`|
-|`  switchport`|`  switchport`|
-|`  switchport mode trunk`|`  switchport mode trunk`|
-|<ins><i>all vlan IDs:</i></ins> `  switchport trunk allowed vlan 888,999`|<ins><i>all vlan IDs:</i></ins> `  switchport trunk allowed vlan 888,999`|
-|`  no shutdown`|`  no shutdown`|
+|<i>Comment</i>|9KA|9KB|
+|---|---|---|
+||`description K8-01-ESX`|`description K8-01-ESX`|
+||`  switchport`|`  switchport`|
+||`  switchport mode trunk`|`  switchport mode trunk`|
+|<ins><i>all vlan IDs:</i></ins>|`  switchport trunk allowed vlan 888,999`|`  switchport trunk allowed vlan 888,999`|
+||`  no shutdown`|`  no shutdown`|
 
 <ins>Additional config once all interfaces are preped</ins>:    
 
