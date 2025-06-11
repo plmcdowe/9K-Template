@@ -7,7 +7,7 @@
 >>
 >> <b>2.2) Once at "switch>" - send sh ver</b>     
 >>
->>> <b>2.2a) If either 9K is not xx.x(x), upgrade to xx.x, ensuring both are the same "dot" and "parenthecial" release.</b>    
+>>> <b>2.2a) If either 9K is not xx.x(x), upgrade to xx.x, ensuring both are the same "dot" and "parenthetical" release.</b>    
 >
 > <b>3) If both 9Ks are a matching xx.x(x) release, begin connecting physical interfaces:</b>    
 >
@@ -67,7 +67,7 @@
 
 You should see <i>"vPC keep-alive status    : peer is alive"</i>    
 
-<ins>Now, configure all production vlans globably \{ VM networks, ESX & vMotion, host management, admin workstation, etc. \} -      
+<ins>Now, configure all production vlans globally \{ VM networks, ESX & vMotion, host management, admin workstation, etc. \} -      
 ALL VLANS for HOSTS must be configured on the PeerLink port-channel</ins>    
 
 |<i>Comment</i>|9KA|9KB|
@@ -166,7 +166,7 @@ Also verify that 9KA is "primary" for vPC role
 |<ins><i>all vlan IDs:</i></ins>|`  switchport trunk allowed vlan 888,999`|`  switchport trunk allowed vlan 888,999`|
 ||`  no shutdown`|`  no shutdown`|
 
-<ins>Additional config once all interfaces are preped</ins>:    
+<ins>Additional config once all interfaces are prepped</ins>:    
 
 |9KA|9KB|
 |---|---|
